@@ -1,0 +1,351 @@
+import { themes } from 'mdx-deck'
+import Layout from './test'
+import Author from './author'
+import cancerim from './assets/gifs/cancerinvslow.gif';
+import methodIm from "./assets/images/method.png"
+import modelSI from "./assets/images/modelSI.png"
+import targetSI from "./assets/gifs/targetSI.gif"
+import si0 from "./assets/gifs/t0SI.gif"
+import si100 from "./assets/gifs/t100SI.gif"
+import si250 from "./assets/gifs/t250SI.gif"
+import si500 from "./assets/gifs/t500SI.gif"
+import si1000 from "./assets/gifs/t1000SI.gif"
+import si1600 from "./assets/gifs/t1600SI.gif"
+import cellim from "./assets/images/cellImaging.png"
+import cellImMask from "./assets/images/cellImageMask.png"
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import seadragonIm from "./assets/images/seadragon.jpg"
+import seadragonMask from "./assets/images/seadragonMask.png"
+import statefitting from "./assets/images/segmentation_process.png"
+import visseadragon from "./assets/gifs/visseadragon.gif"
+import visseadragon_disc from "./assets/gifs/vis_discseadragon.gif"
+import vis from "./assets/gifs/vissegmentcells.gif"
+import vis_disc from "./assets/gifs/vis_disc.gif"
+import fhnBig from "./assets/gifs/fhnBig.gif"
+import fhnApproach from "./assets/images/fhnApproach.png"
+import fhnVid from "./assets/gifs/fhntrain.gif"
+import textor from "./assets/images/textor.png"
+import keemink from "./assets/images/keemink.png"
+import kachman from "./assets/images/kachman.png"
+import shabaz from "./assets/images/shabaz.jpg"
+import koop from "./assets/images/koop.jpg"
+import lili from "./assets/images/lili.jpg"
+import ellis from "./assets/images/ellis.png"
+import radboud from "./assets/images/radboud.png"
+import rwAnim from "./assets/gifs/rw_anim.gif"
+import celldata from "./assets/images/cell_data.png"
+import rwresults from "./assets/images/results_fitting.png"
+import siApproach from "./assets/images/si_approach.png"
+
+export const theme = themes.book
+
+
+<div style={{textAlign: "center"}}>
+
+# Fitting Stochastic Lattice Models using Approximate Gradients
+
+<Author>
+Jan Schering<sup>1</sup>, Sander Keemink<sup>2</sup>, Johannes Textor<sup>1</sup>
+</Author>
+<br />
+<small><sup>1</sup>
+Institute for Computing and Information Sciences Radboud University Nijmegen</small>
+<br />
+<small><sup>2</sup>Donders Institute for Brain, Cognition and Behavior Nijmegen</small>
+
+</div>
+
+
+
+
+---
+
+import CA from "./ca.js"
+
+## Stochastic Lattice Models 
+
+<CA />
+
+---
+
+## Stochastic Lattice Models (sLMs)
+
+<div style={{display: "flex"}}>
+
+<div>
+
+<b>Application: &nbsp;</b> Phenomenological Studies
+<br /><br />
+<b>Goal: &nbsp;</b> Calibrate model to experimental data
+<br /><br />
+<b>Challenges: &nbsp;</b>
+
+<ul>
+    <li>Likelihood functions intractable</li>
+    <li>Stochastic</li>
+    <li>Discrete</li>
+</ul>
+&rarr; Non-differentiable
+
+</div>
+
+<fig>
+<img style={{height: 550, width:550, marginLeft: 200}} src={cancerim} />
+<figcaption style={{fontSize:20, textAlign: "center" }}>https://artistoo.net/examples.html</figcaption>
+</fig>
+
+</div>
+
+---
+
+## sLMs are non-differentiable, but..
+
+<figure>
+<img style={{height: 550,}} src={methodIm} />
+<figcaption style={{textAlign: "center"}}>&rarr; Reparameterization + Straight-through estimators enable gradient flow</figcaption>
+</figure>
+
+---
+
+## Research Statement
+
+<ol>
+    <li style={{marginBottom: 50, marginTop: 50}}><em>sLMs are non-differentiable &rarr; no backpropagation</em></li>
+    <li><em>Reparameterization + Straight-through estimators could re-enable gradient flow</em></li>
+</ol>
+
+
+<p style={{textAlign: "center", marginTop: 80}}><b>&rarr; Can we fit sLMs to data by using backpropagation of approximate gradients?</b></p>
+
+---
+
+## Transition fitting: Susceptible-Infected Model
+
+<div style={{display: "flex"}}>
+<img style={{height:400, marginTop: 50}} src={modelSI}></img>
+<div style={{alignSelf: "center"}}>
+<fig>
+<figcaption style={{marginTop:0, marginBottom:0, textAlign: "center"}}>
+    ß = 0.45
+</figcaption>
+<img style={{height: 420,}} src={targetSI}></img>
+</fig>
+</div>
+</div>
+<p style={{textAlign: "center"}}><b>Question: &nbsp;</b> Can we estimate ß from a set of state transitions? (Transition fitting)</p>
+
+---
+
+## Transition fitting: Approach
+
+<div>
+    <img style={{height: 500}} src={siApproach}>
+    </img>
+</div>
+
+---
+
+## Transition fitting: Results
+
+<div style={{display: "flex", flexDirection: "column"}}>
+<figure style={{marginBottom: 0, marginTop: 0}}>
+<figcaption style={{textAlign: "center"}}>Target</figcaption>
+<img style={{width: "100%", height:200}} src={targetSI}></img>
+</figure>
+<div style={{display: "flex", flexDirection: "row", alignSelf: "center"}}>
+<figure>
+<figcaption style={{textAlign: "center"}}>t=0</figcaption>
+<img style={{width:200, height:200}} src={si0}></img>
+</figure>
+<figure>
+<figcaption style={{textAlign: "center"}}>t=250</figcaption>
+<img style={{width:200, height:200}} src={si250}></img>
+</figure>
+<figure>
+<figcaption style={{textAlign: "center"}}>t=500</figcaption>
+<img style={{width:200, height:200}} src={si500}></img>
+</figure>
+<figure>
+<figcaption style={{textAlign: "center"}}>t=1000</figcaption>
+<img style={{width:200, height:200}} src={si1000}></img>
+</figure>
+<figure>
+<figcaption style={{textAlign: "center"}}>t=1600</figcaption>
+<img style={{width:200, height:200}} src={si1600}></img>
+</figure>
+</div>
+</div>
+
+---
+
+## Trajectory fitting: Persistent Random Walk Model
+
+<div style={{display: "flex"}}>
+<div style={{display: "flex", flexDirection: "column"}}>
+<ul>
+    <li>Random walk governed by p<sub>step</sub></li>
+    <li>At each step, keep previous direction with probability p<sub>persist</sub></li>
+</ul>
+<p style={{marginTop: 10, marginBottom: 10}}>&rarr; Mean Square Displacement (MSD) is governed by (p<sub>step</sub>,p<sub>persist</sub>)</p>
+<p style={{marginTop: 10, marginBottom: 10}}><b>Question: &nbsp;</b> Can we fit (p<sub>step</sub>,p<sub>persist</sub>) to a set of target MSDs? (Trajectory fitting)</p>
+</div>
+<div style={{display: "flex", flexDirection: "column"}}>
+<img style={{height: 300, width: "min-content"}} src={celldata}/>
+<figure style={{width: 800}}>
+<img style={{height: 300}} src={rwAnim} />
+</figure>
+</div>
+</div>
+
+--- 
+
+## Trajectory fitting: Approach
+
+<ol>
+    <li>Initialize (p<sub>step</sub>,p<sub>persist</sub>) randomly</li>
+    <li>Simulate batch of cells with current (p<sub>step</sub>,p<sub>persist</sub>) for T steps</li>
+    <li>every &#916;t steps, calculate square difference between MSD<sub>observed</sub> and MSD<sub>simulated</sub></li>
+    <li>differentiate w.r.t. the sum of square differences and update (p<sub>step</sub>,p<sub>persist</sub>)</li>
+    <li>back to 2.</li>
+</ol>
+
+---
+
+## Trajectory fitting: Results
+
+<figure>
+<img style={{height:500}} src={rwresults} />
+</figure>
+
+---
+
+## State fitting: Segmentation Model
+
+<div style={{display: "flex", flexDirection: "column"}}>
+    <div style={{display: "flex", flexDirection: "row", alignSelf: "center"}}>
+        <img style={{width: 300, height: "min-content"}} src={cellim} />
+        <p style={{textAlign: "center", writingMode: "vertical-lr"}}><ArrowForwardIcon style={{fontSize: 40}}/></p>
+        <img style={{width: 300, height: "min-content"}} src={cellImMask} />
+    </div>
+    <div style={{display: "flex", flexDirection: "row", marginTop: 50, alignSelf: "center"}}>
+        <img style={{width: 300, height: "min-content"}} src={seadragonIm} />
+        <p style={{textAlign: "center", writingMode: "vertical-lr"}}><ArrowForwardIcon style={{fontSize: 40}}/></p>
+        <img style={{width: 300, height: "min-content"}} src={seadragonMask} />
+    </div>
+    <p style={{textAlign: "center"}}><b>Question: &nbsp;</b>Can we fit the lattice to the image? <br /> (State Fitting)</p>
+</div>
+
+---
+
+## State fitting: Approach
+
+
+<figure>
+<img style={{height: 550,}} src={statefitting} />
+</figure>
+
+---
+
+## State fitting: Results
+
+<div style={{display: "flex", flexDirection: "column"}}>
+    <div style={{display: "flex", flexDirection: "row", alignSelf: "center"}}>
+        <img style={{width: 350, height: "min-content"}} src={vis} loop="infinite"/>
+        <p style={{textAlign: "center", writingMode: "vertical-lr"}}><ArrowForwardIcon style={{fontSize: 40}}/></p>
+        <img style={{width: 350, height: "min-content"}} src={vis_disc} loop="infinite"/>
+    </div>
+    <div style={{display: "flex", flexDirection: "row", marginTop: 50, alignSelf: "center"}}>
+        <img style={{width: 350, height: "min-content"}} src={visseadragon} loop="infinite"/>
+        <p style={{textAlign: "center", writingMode: "vertical-lr"}}><ArrowForwardIcon style={{fontSize: 40}}/></p>
+        <img style={{width: 350, height: "min-content"}} src={visseadragon_disc} loop="infinite"/>
+    </div>
+</div>
+
+--- 
+
+## Stability fitting: Fitzhugh-Nagumo Model
+
+
+<div style={{display: "flex"}}>
+<div style={{display: "flex", flexDirection: "column"}}>
+<ul>
+    <li>Reaction-diffusion process between two chemicals A,B</li>
+    <li>
+        At each step: 
+        <ol>
+            <li>Independent spatial diffusion of each chemical (D<sub>A</sub>, D<sub>B</sub>)</li>
+            <li>Reaction between the chemicals (k<sub>1</sub>,k<sub>2</sub>,k<sub>3</sub>)</li>
+        </ol>
+    </li>
+</ul>
+<p><b>Question:</b> Can we find parameters that produce stable patterns? <br />(Stability fitting)</p>
+</div>
+<figure style={{textAlign: "center"}}>
+    <img style={{width: 500, height: "min-content", alignSelf: "center"}} src={fhnBig} loop="infinite"></img>
+    <figcaption>Spatial concentration of chemical A over time</figcaption>
+</figure>
+</div>
+
+---
+
+## Stability fitting: Approach
+
+<figure>
+<img style={{ height:550,}} src={fhnApproach} />
+</figure>
+
+---
+
+## Stability fitting: Results
+
+<figure>
+<img style={{ height:740,}} src={fhnVid} />
+</figure>
+
+---
+
+## Summary
+
+<div style={{display: "flex", flexDirection: "column"}}>
+    <div style={{display: "flex", flexDirection: "row", alignSelf: "center"}}>
+        <div style={{display: "flex"}}>
+            <img style={{height: 250, width: "min-content"}} src={targetSI} />
+            <div style={{verticalAlign: "middle", alignSelf: "center", marginLeft: 20}}>1.) Transition Fitting: <br /> Susceptible-Infected Model</div>
+        </div>
+        <div style={{display: "flex", marginLeft: 50}}>
+            <img style={{height: 250, width: "min-content"}} src={rwAnim} />
+            <div style={{verticalAlign: "middle", alignSelf: "center", marginLeft: 20}}>2.) Trajectory Fitting: <br /> Persistent Random Walk Model</div>
+        </div>
+    </div>
+    <div style={{display: "flex", flexDirection: "row", marginTop: 50, alignSelf: "center"}}>
+        <div style={{display: "flex", marginRight: 100}}>
+            <img style={{height: 250, width: "min-content"}} src={visseadragon} />
+            <div style={{verticalAlign: "middle", alignSelf: "center", marginLeft: 20}}>3.) State Fitting: <br />Segmentation Model</div>
+        </div>
+        <div style={{display: "flex", marginLeft: 50, marginRight: 100}}>
+            <img style={{height: 250, width: "min-content"}} src={fhnBig} />
+            <div style={{verticalAlign: "middle", alignSelf: "center", marginLeft: 20}}>4.) Stability Fitting: <br /> Fitzhugh-Nagumo Model</div>
+        </div>
+    </div>
+</div>
+
+---
+
+## Acknowledgments
+
+<div style={{display: "flex", flexDirection: "column"}}>
+    <div style={{display: "flex", flexDirection: "row", alignSelf: "center"}}>
+        <img style={{height: 250, width: "min-content", marginLeft: 25}} src={textor}/>
+        <img style={{height: 250, width: "min-content", marginLeft: 25}} src={keemink}/>
+        <img style={{height: 250, width: "min-content", marginLeft: 25}} src={kachman}/>
+        <img style={{height: 250, width: "min-content", marginLeft: 25}} src={shabaz}/>
+        <img style={{height: 250, width: "min-content", marginLeft: 25}} src={koop}/>
+        <img style={{height: 250, width: "min-content", marginLeft: 25}} src={lili}/>
+    </div>
+    <div style={{display: "flex", flexDirection: "row", alignSelf: "center", marginTop: 20}}>
+        <img style={{height: 250, width: "min-content", marginLeft: 25}} src={ellis}/>
+        <img style={{height: 250, width: "min-content", marginLeft: 25}} src={radboud}/>
+    </div>
+</div>
+
+
