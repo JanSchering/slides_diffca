@@ -36,6 +36,9 @@ import rwAnim from "./assets/gifs/rw_anim.gif"
 import celldata from "./assets/images/cell_data.png"
 import rwresults from "./assets/images/results_fitting.png"
 import siApproach from "./assets/images/si_approach.png"
+import noGrad1 from "./assets/images/no_grad1.png"
+import noGrad2 from "./assets/images/no_grad2.png"
+import noGrad3 from "./assets/images/no_grad3.png" 
 
 export const theme = themes.book
 
@@ -82,10 +85,8 @@ import CA from "./ca.js"
 
 <ul>
     <li>Likelihood functions intractable</li>
-    <li>Stochastic</li>
-    <li>Discrete</li>
+    <li>Non-differentiable</li>
 </ul>
-&rarr; Non-differentiable
 
 </div>
 
@@ -94,6 +95,26 @@ import CA from "./ca.js"
 <figcaption style={{fontSize:20, textAlign: "center" }}>https://artistoo.net/examples.html</figcaption>
 </fig>
 
+</div>
+
+---
+
+## What makes sLMs non-differentiable?
+
+<div style={{display: "flex"}}>
+    <div style={{flexDirection: "row"}}>
+        <figure>
+            <img style={{height: 300,}} src={noGrad1} />
+        </figure>
+        <figure>
+            <img style={{height: 300,}} src={noGrad2} />
+        </figure>
+    </div>
+    <div style={{alignSelf: "center"}}>
+        <figure>
+            <img style={{height: 300,}} src={noGrad3} />
+        </figure>
+    </div>
 </div>
 
 ---
