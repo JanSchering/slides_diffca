@@ -32,8 +32,8 @@ const boardSize = 550
 const CA = ()  => {
     const [renderKey, setRenderKey] = React.useState(0)
     const [gridSize, setGridSize] = React.useState(1)
-    const [animSpeed, setAnimSpeed] = React.useState(1)
-    const [p_success, setP] = React.useState(0.5)
+    const [animSpeed, setAnimSpeed] = React.useState(2)
+    const [p_success, setP] = React.useState(1.0)
 
     const codes = Array.from({length: numPerturbs}, (x, i) => i).map(decimal => convertToBinary(decimal))
     let runner;
@@ -124,7 +124,7 @@ const CA = ()  => {
                 <Grid container spacing={1}>
                   {codes.map((code, idx) => (
                     <Grid item key={`${code}`}>
-                      <RuleCard code={code} />
+                      <RuleCard code={code} idx={idx}/>
                     </Grid>
                   ))}
                 </Grid>
@@ -351,8 +351,9 @@ export const Cell = ({ props = {}, small = false, filled = false, sizeMultiplier
 /**
  * Visualize the given rule through HTML
  */
-const RuleCard = ({code}) => {
-    const [fill, setFill] = React.useState(false)
+const RuleCard = ({code, idx}) => {
+    const prefill =  idx === 1 | idx === 4 | idx === 6
+    const [fill, setFill] = React.useState(prefill)
 
     return (<Paper elevation={3}  style={{width: 90, height: 100}}>
         <Stack spacing={0}>

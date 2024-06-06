@@ -1,5 +1,6 @@
 import { themes } from 'mdx-deck'
 import Layout from './test'
+import CustomFooter from "./footer.js"
 import Author from './author'
 import cancerim from './assets/gifs/cancerinvslow.gif';
 import methodIm from "./assets/images/method.png"
@@ -46,9 +47,8 @@ export const theme = themes.book
 <div style={{textAlign: "center"}}>
 
 # Fitting Stochastic Lattice Models using Approximate Gradients
-
 <Author>
-Jan Schering<sup>1</sup>, Sander Keemink<sup>2</sup>, Johannes Textor<sup>1</sup>
+<b>Jan Schering</b><sup>1</sup>, Sander Keemink<sup>2</sup>, Johannes Textor<sup>1</sup>
 </Author>
 <br />
 <small><sup>1</sup>
@@ -56,9 +56,19 @@ Institute for Computing and Information Sciences Radboud University Nijmegen</sm
 <br />
 <small><sup>2</sup>Donders Institute for Brain, Cognition and Behavior Nijmegen</small>
 
+<p style={{marginTop: 50}}>
+ECMS 2024 - Track Simulation and Optimization
+</p>
+
+<div style={{textAlign: "-webkit-center"}}>
+<p style={{fontSize: 18, marginTop: 50, width: 700, alignSelf: "center"}}>
+    Part of the research presented was performed for an ELLIS excellence fellowship,
+    funded by Radboud AI, Radboud University. This research was further supported by HFSP
+    program grant RGP0053/2020.
+</p>
 </div>
 
-
+</div>
 
 
 ---
@@ -68,6 +78,8 @@ import CA from "./ca.js"
 ## Stochastic Lattice Models 
 
 <CA />
+
+<Footer><CustomFooter /></Footer>
 
 ---
 
@@ -101,19 +113,13 @@ import CA from "./ca.js"
 
 ## What makes sLMs non-differentiable?
 
-<div style={{display: "flex"}}>
-    <div style={{flexDirection: "row"}}>
-        <figure>
-            <img style={{height: 300,}} src={noGrad1} />
-        </figure>
-        <figure>
-            <img style={{height: 300,}} src={noGrad2} />
-        </figure>
+<div style={{display: "flex", flexDirection: "column"}}>
+    <div style={{flexDirection: "row", display: "flex"}}>
+        <img style={{height: 280, display: "flex"}} src={noGrad1} />
+        <img style={{height: 280, display: "flex"}} src={noGrad2} />
     </div>
-    <div style={{alignSelf: "center"}}>
-        <figure>
-            <img style={{height: 300,}} src={noGrad3} />
-        </figure>
+    <div style={{alignSelf: "center", display: "flex"}}>
+        <img style={{height: 280,}} src={noGrad3} />
     </div>
 </div>
 
@@ -160,7 +166,7 @@ import CA from "./ca.js"
 ## Transition fitting: Approach
 
 <div>
-    <img style={{height: 500}} src={siApproach}>
+    <img style={{height: 600}} src={siApproach}>
     </img>
 </div>
 
